@@ -511,6 +511,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1634901653081636477, guid: 8c53c26870f46f84e9d991812b174202, type: 3}
+      propertyPath: m_DrawMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634901653081636477, guid: 8c53c26870f46f84e9d991812b174202, type: 3}
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
@@ -577,6 +581,10 @@ PrefabInstance:
     - target: {fileID: 7612148647733164221, guid: 8c53c26870f46f84e9d991812b174202, type: 3}
       propertyPath: m_Offset.x
       value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612148647733164221, guid: 8c53c26870f46f84e9d991812b174202, type: 3}
+      propertyPath: m_SpriteTilingProperty.drawMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1527,8 +1535,6 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1987695285}
-  - {fileID: 718346271}
-  - {fileID: 2106269260}
   - {fileID: 5884680928224415255}
   - {fileID: 27629049}
   - {fileID: 1932396459}
@@ -1537,3 +1543,5 @@ SceneRoots:
   - {fileID: 1281139984}
   - {fileID: 1443043557}
   - {fileID: 1120094999}
+  - {fileID: 2106269260}
+  - {fileID: 718346271}
