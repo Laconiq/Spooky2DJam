@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5928043496043146258}
   - component: {fileID: 3272294124125458687}
   - component: {fileID: 5911649534352311361}
-  - component: {fileID: 4704302949623520591}
+  - component: {fileID: 8559445997893460278}
   m_Layer: 0
   m_Name: LightSwitch
   m_TagString: Untagged
@@ -134,7 +134,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.7917702, y: 1.2459304}
   m_EdgeRadius: 0
---- !u!114 &4704302949623520591
+--- !u!114 &8559445997893460278
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,13 +143,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 12634098479264275}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: edb68ea1ec6f84646974c77283e06d69, type: 3}
+  m_Script: {fileID: 11500000, guid: 249da88db1d83544c8dd581f6d66cabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _text: {fileID: 7534075223958715996}
   _associatedLight: {fileID: 0}
+  _text: {fileID: 7534075223958715996}
+  lightRotation: 0
   onMmfPlayer: {fileID: 2779077157068442408}
   offMmfPlayer: {fileID: 3303030254569069275}
+  objectIsRotating: 0
 --- !u!1 &498907107731475553
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,7 +580,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -973.9177, y: -544.6392}
+  m_AnchoredPosition: {x: -973.93756, y: -544.62494}
   m_SizeDelta: {x: 10, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3694678421673441753

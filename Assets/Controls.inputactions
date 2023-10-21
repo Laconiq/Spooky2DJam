@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RotateLightUp",
+                    "name": "RotateLight",
                     "type": "Value",
                     "id": "672fd297-f148-4e5c-81e2-4634f176438b",
                     "expectedControlType": "Vector3",
@@ -259,7 +259,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -270,7 +270,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -281,7 +281,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -292,7 +292,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -303,7 +303,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -314,7 +314,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -325,7 +325,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RotateLightUp",
+                    "action": "RotateLight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

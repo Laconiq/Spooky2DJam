@@ -8,9 +8,11 @@ public class BatController : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
     public float speed;
+    [HideInInspector] public float currentSpeed;
 
     public void Awake()
     {
+        currentSpeed = speed;
         controls = new Controls();
         controls.Bat.Move.performed += OnMovePerformed;
         controls.Bat.Move.canceled += OnMoveCanceled;
@@ -34,7 +36,7 @@ public class BatController : MonoBehaviour
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
-        Vector2 moveVelocity = moveInput * speed;
+        Vector2 moveVelocity = moveInput * currentSpeed;
         _rigidbody2D.velocity = moveVelocity;
         if (moveInput.x > 0)
             _spriteRenderer.flipX = false;

@@ -55,7 +55,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""RotateLightUp"",
+                    ""name"": ""RotateLight"",
                     ""type"": ""Value"",
                     ""id"": ""672fd297-f148-4e5c-81e2-4634f176438b"",
                     ""expectedControlType"": ""Vector3"",
@@ -281,7 +281,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -292,7 +292,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -303,7 +303,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -314,7 +314,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -325,7 +325,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -336,7 +336,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -347,7 +347,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""RotateLightUp"",
+                    ""action"": ""RotateLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 }
@@ -516,7 +516,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
-        m_Player_RotateLightUp = m_Player.FindAction("RotateLightUp", throwIfNotFound: true);
+        m_Player_RotateLight = m_Player.FindAction("RotateLight", throwIfNotFound: true);
         // Bat
         m_Bat = asset.FindActionMap("Bat", throwIfNotFound: true);
         m_Bat_Move = m_Bat.FindAction("Move", throwIfNotFound: true);
@@ -587,7 +587,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interaction;
-    private readonly InputAction m_Player_RotateLightUp;
+    private readonly InputAction m_Player_RotateLight;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -595,7 +595,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
-        public InputAction @RotateLightUp => m_Wrapper.m_Player_RotateLightUp;
+        public InputAction @RotateLight => m_Wrapper.m_Player_RotateLight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -614,9 +614,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
-            @RotateLightUp.started += instance.OnRotateLightUp;
-            @RotateLightUp.performed += instance.OnRotateLightUp;
-            @RotateLightUp.canceled += instance.OnRotateLightUp;
+            @RotateLight.started += instance.OnRotateLight;
+            @RotateLight.performed += instance.OnRotateLight;
+            @RotateLight.canceled += instance.OnRotateLight;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -630,9 +630,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
-            @RotateLightUp.started -= instance.OnRotateLightUp;
-            @RotateLightUp.performed -= instance.OnRotateLightUp;
-            @RotateLightUp.canceled -= instance.OnRotateLightUp;
+            @RotateLight.started -= instance.OnRotateLight;
+            @RotateLight.performed -= instance.OnRotateLight;
+            @RotateLight.canceled -= instance.OnRotateLight;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -747,7 +747,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
-        void OnRotateLightUp(InputAction.CallbackContext context);
+        void OnRotateLight(InputAction.CallbackContext context);
     }
     public interface IBatActions
     {
