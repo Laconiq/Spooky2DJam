@@ -10,11 +10,12 @@ public class LevelsManager : MonoBehaviour
     private int _currentLevel;
     private GameObject _vampireCharacter;
     private GameObject _batCharacter;
+    public int startLevel;
     private void Awake()
     {
+        _currentLevel = startLevel - 1;
         _vampireCharacter = FindObjectOfType<PlayerController>().gameObject;
         _batCharacter = FindObjectOfType<BatController>().gameObject;
-        _currentLevel = 0;
         MoveCharactersToCurrentLevel();
         UpdateLevelText();
     }

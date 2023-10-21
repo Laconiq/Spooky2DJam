@@ -7,7 +7,7 @@ public class LightSwitch : MonoBehaviour
     [SerializeField] private GameObject _associatedLight;
     [SerializeField] private GameObject _text;
     [HideInInspector] public float lightRotation;
-    private readonly float _lightRotationSpeed = 20f;
+    private readonly float _lightRotationSpeed = 40f;
     private float _maxUpRotation = 90f;
     private float _maxDownRotation = 0f;
     
