@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelsManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LevelsManager : MonoBehaviour
     private GameObject _vampireCharacter;
     private GameObject _batCharacter;
     public int startLevel;
+    [SerializeField] private GameObject credits;
     private void Awake()
     {
         _currentLevel = startLevel - 1;
@@ -45,12 +47,17 @@ public class LevelsManager : MonoBehaviour
         _currentLevel = i;
         MoveCharactersToCurrentLevel();
     }
+
     public void GoToNextLevel()
     {
-        if (_currentLevel >= levels.Count - 1) return;
+        if (_currentLevel >= levels.Count - 1)
+        {
+            credits.SetActive(true);
+        }
         _currentLevel++;
         MoveCharactersToCurrentLevel();
     }
+
 
     private void UpdateLevelText()
     {
