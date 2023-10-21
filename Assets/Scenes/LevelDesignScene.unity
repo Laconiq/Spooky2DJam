@@ -680,7 +680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2937828931618219036, guid: 36e50f6d025709a469079e6ff73d4f3e, type: 3}
       propertyPath: m_Name
-      value: RaycastV2
+      value: Raycast
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1139,6 +1139,14 @@ PrefabInstance:
     - target: {fileID: 4392413300468543697, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950761527350234863, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5950761527350234863, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

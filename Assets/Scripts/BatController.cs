@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -12,8 +13,13 @@ public class BatController : MonoBehaviour
         controls.Bat.Move.performed += OnMovePerformed;
         controls.Bat.Move.canceled += OnMoveCanceled;
         _rigidbody2D = GetComponent<Rigidbody2D>();
+    }
+
+    private void Start()
+    {
         controls.Bat.Disable();
     }
+
     private void OnEnable()
     {
         controls.Enable();
