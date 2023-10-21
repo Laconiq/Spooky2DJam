@@ -20,8 +20,8 @@ public class LightSwitchManager : MonoBehaviour
 
     private float _lightRotation;
     private readonly float _lightRotationSpeed = 10f;
-    private float _maxUpRotation = 45f;
-    private float _maxDownRotation = -45f;
+    private float _maxUpRotation = 90f;
+    private float _maxDownRotation = 0f;
     
     [SerializeField] private GameObject _text;
     [SerializeField] private GameObject _associatedLight;
@@ -64,16 +64,14 @@ public class LightSwitchManager : MonoBehaviour
     {
         Vector3 inputToDisable = _controls.Player.RotateLightUp.ReadValue<Vector3>();
         
-        Debug.Log(_objectIsRotating);
-        
-        if (_associatedLight.transform.eulerAngles.z > _maxUpRotation)
-        {
-           
-        }
-        
         if (_objectIsRotating)
         {
-            _associatedLight.transform.Rotate(Vector3.forward, _lightRotation * _lightRotationSpeed * Time.deltaTime);
+            Vector3 lightRotationAngle = _associatedLight.transform.localEulerAngles;
+
+            float clampedZRotation = Mathf.Clamp(lightRotationAngle.z + _lightRotation * _lightRotationSpeed * Time.deltaTime, _maxDownRotation, _maxUpRotation);
+            
+            _associatedLight.transform.localEulerAngles = new Vector3(lightRotationAngle.x, lightRotationAngle.y, clampedZRotation);
+            
         }
     }
 
