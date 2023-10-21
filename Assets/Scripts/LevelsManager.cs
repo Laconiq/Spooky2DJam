@@ -15,7 +15,7 @@ public class LevelsManager : MonoBehaviour
         _currentLevel = 0;
         MoveCharactersToCurrentLevel();
     }
-    private void MoveCharactersToCurrentLevel()
+    public void MoveCharactersToCurrentLevel()
     {
         if (_currentLevel >= levels.Count) return;
         Level currentLevel = levels[_currentLevel];
