@@ -16,7 +16,7 @@ public class LightSwitchManager : MonoBehaviour
     private bool _isPlayerFrozen;
     private bool _objectIsRotating;
 
-    public PlayerController _playerController;
+    private PlayerController _playerController;
 
     private float _lightRotation;
     private readonly float _lightRotationSpeed = 10f;
@@ -29,8 +29,8 @@ public class LightSwitchManager : MonoBehaviour
 
     private void Awake()
     {
+        _playerController = FindObjectOfType<PlayerController>();
         _controls = new Controls();
-        
         _controls.Player.Interaction.performed += MechanismActivation;
         _controls.Player.RotateLightUp.performed += RotateLight;
         _controls.Player.RotateLightUp.canceled += CancelLightRotation;
