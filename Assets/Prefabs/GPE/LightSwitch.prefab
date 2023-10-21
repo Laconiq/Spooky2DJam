@@ -871,8 +871,8 @@ MonoBehaviour:
         Mode: 0
         RandomSfx:
         - {fileID: 8300000, guid: dca2c9a1b5a00504a96e867421a8ed0a, type: 3}
-        MinVolume: 1
-        MaxVolume: 1
+        MinVolume: 0.8
+        MaxVolume: 0.8
         MinPitch: 1
         MaxPitch: 1
         SfxAudioMixerGroup: {fileID: 0}
@@ -888,7 +888,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 24300002, guid: 69da893f1c7cbab459d03a95429cf544, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
