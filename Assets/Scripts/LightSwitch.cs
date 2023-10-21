@@ -39,6 +39,7 @@ public class LightSwitch : MonoBehaviour
                 go.GetComponent<BatController>().currentSpeed = 0;
                 FindObjectOfType<PlayerController>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
             }
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.3f);
         }
         else if (_isUsed && _gameObjectUsing == go)
         {
@@ -53,6 +54,7 @@ public class LightSwitch : MonoBehaviour
                 go.GetComponent<BatController>().currentSpeed = go.GetComponent<BatController>().speed;
                 FindObjectOfType<PlayerController>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             }
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         }
     }
     
