@@ -275,17 +275,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""82a78175-04e9-4972-9bb1-8a2cf83a474b"",
-                    ""path"": ""<Keyboard>/z"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""RotateLightUp"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""3D Vector"",
                     ""id"": ""77eae082-7c33-4d27-97d6-13932d13837e"",
                     ""path"": ""3DVector"",
@@ -343,7 +332,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""forward"",
                     ""id"": ""327fcc45-e7e9-4f44-90c0-74d45bdeb329"",
-                    ""path"": ""<Keyboard>/z"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -354,7 +343,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""backward"",
                     ""id"": ""ad390656-1a2e-4b79-bfe0-aed4a11bc72c"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
