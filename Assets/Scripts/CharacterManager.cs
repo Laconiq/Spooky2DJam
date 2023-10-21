@@ -55,6 +55,10 @@ public class CharacterManager : MonoBehaviour
             _cinemachineVirtualCamera.Follow = batCharacter.transform;
             _batRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             _vampireRigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+            if (batCharacter.GetComponent<LightController>().playerState == LightController.PlayerState.Interacting)
+            {
+                _vampireRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
         else
         {

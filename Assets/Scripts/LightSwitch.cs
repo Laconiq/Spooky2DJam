@@ -34,18 +34,25 @@ public class LightSwitch : MonoBehaviour
             go.GetComponent<LightController>().playerState = LightController.PlayerState.Interacting;
             if (go.GetComponent<PlayerController>()!=null)
                 go.GetComponent<PlayerController>().currentSpeed = 0;
-            else if (go.GetComponent<BatController>()!=null)
+            else if (go.GetComponent<BatController>() != null)
+            {
                 go.GetComponent<BatController>().currentSpeed = 0;
+                FindObjectOfType<PlayerController>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
+            }
         }
         else if (_isUsed && _gameObjectUsing == go)
         {
             offMmfPlayer.PlayFeedbacks();
             _isUsed = false;
+            lightRotation = 0;
             go.GetComponent<LightController>().playerState = LightController.PlayerState.Idle;
             if (go.GetComponent<PlayerController>()!=null)
                 go.GetComponent<PlayerController>().currentSpeed = go.GetComponent<PlayerController>().speed;
-            else if (go.GetComponent<BatController>()!=null)
+            else if (go.GetComponent<BatController>() != null)
+            {
                 go.GetComponent<BatController>().currentSpeed = go.GetComponent<BatController>().speed;
+                FindObjectOfType<PlayerController>().GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+            }
         }
     }
     
@@ -73,7 +80,7 @@ public class LightSwitch : MonoBehaviour
             _wheelAnimator.SetInteger("State", 1);
         else if (lightRotation == 1)
             _wheelAnimator.SetInteger("State", 2);
-        else if (lightRotation == 0)
+        else if (lightRotation == 0 || _isUsed == true) 
             _wheelAnimator.SetInteger("State", 0);
     }
 }
