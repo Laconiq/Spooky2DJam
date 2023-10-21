@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3332110241771506654}
   - component: {fileID: 382841181069724309}
   - component: {fileID: 4983738214600084800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FootstepFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 4398664773896657392}
   - component: {fileID: 8822457956344146476}
   - component: {fileID: 8696062367728080380}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Vampire
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -400,7 +400,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6ae049bbcbe20bd4f868394355d24878, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -409,7 +409,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4398664773896657392
 MonoBehaviour:
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 3514320118834198994}
   - component: {fileID: 1619451623851114593}
   - component: {fileID: 7543530283590591614}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: JumpFeedback
   m_TagString: Untagged
   m_Icon: {fileID: 0}

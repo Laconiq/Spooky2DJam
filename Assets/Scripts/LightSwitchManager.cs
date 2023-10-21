@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Feedbacks;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -26,6 +27,8 @@ public class LightSwitchManager : MonoBehaviour
     [SerializeField] private GameObject _text;
     [SerializeField] private GameObject _associatedLight;
 
+    [SerializeField] private MMF_Player onMmfPlayer;
+    [SerializeField] private MMF_Player offMmfPlayer;
 
     private void Awake()
     {
@@ -52,14 +55,12 @@ public class LightSwitchManager : MonoBehaviour
         _controls.Player.RotateLightUp.canceled -= CancelLightRotation;
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         _text.SetActive(false);
         _isInsideTrigger = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 inputToDisable = _controls.Player.RotateLightUp.ReadValue<Vector3>();
@@ -78,14 +79,12 @@ public class LightSwitchManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         _text.SetActive(true);
-
         _isInsideTrigger = true;
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         _text.SetActive(false);
-        
         _isInsideTrigger = false;
     }
 
@@ -94,16 +93,15 @@ public class LightSwitchManager : MonoBehaviour
         if (_isInsideTrigger && _playerController.playerState is PlayerController.PlayerState.Idle)
         {
             _playerController.speed = 0;
- 
             Debug.Log("Interaction is done");
-
             _playerController.playerState = PlayerController.PlayerState.Interacting;
+            onMmfPlayer.PlayFeedbacks();
         }
         else if(_playerController.playerState is PlayerController.PlayerState.Interacting)
         {
             _playerController.speed = 10;
-
             _playerController.playerState = PlayerController.PlayerState.Idle;
+            offMmfPlayer.PlayFeedbacks();
         }
     }
 
