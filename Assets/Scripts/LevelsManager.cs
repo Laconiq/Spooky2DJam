@@ -30,6 +30,7 @@ public class LevelsManager : MonoBehaviour
         _vampireCharacter.transform.position = currentLevel.vampireSpawn.transform.position;
         _batCharacter.transform.position = currentLevel.batSpawn.transform.position;
         UpdateLevelText();
+        _vampireCharacter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
         
         RaycastData[] raycastDataObjects = FindObjectsOfType<RaycastData>();
         foreach (RaycastData raycastData in raycastDataObjects)

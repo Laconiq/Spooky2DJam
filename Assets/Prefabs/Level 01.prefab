@@ -197,7 +197,7 @@ MonoBehaviour:
   - {x: 0.2626911, y: -1.8054087, z: 0}
   m_ShapePathHash: -1206125766
   m_Mesh: {fileID: 0}
-  m_InstanceId: 146568
+  m_InstanceId: -2878
   m_LocalBounds:
     m_Center: {x: -0.020537525, y: 0.08706057, z: 0}
     m_Extent: {x: 0.4680971, y: 1.8924693, z: 0}
@@ -8133,6 +8133,14 @@ PrefabInstance:
       propertyPath: m_Tiles.Array.data[195].second.m_TileObjectToInstantiateIndex
       value: 65535
       objectReference: {fileID: 0}
+    - target: {fileID: 8764976649961642931, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.6875
+      objectReference: {fileID: 0}
+    - target: {fileID: 8764976649961642931, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 8913206795312169597, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
       propertyPath: m_LocalPosition.x
       value: 21.6875
@@ -8784,19 +8792,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3529005911619242620, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: m_LocalBounds.m_Center.x
-      value: -0.000100016594
+      value: 0.000100016594
       objectReference: {fileID: 0}
     - target: {fileID: 3529005911619242620, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: m_LocalBounds.m_Center.y
-      value: -0.0016999841
+      value: 0.0014500022
       objectReference: {fileID: 0}
     - target: {fileID: 3529005911619242620, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: m_LocalBounds.m_Extent.x
-      value: 0.9968
+      value: 0.9985
       objectReference: {fileID: 0}
     - target: {fileID: 3529005911619242620, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: m_LocalBounds.m_Extent.y
-      value: 1.0030999
+      value: 0.99405
       objectReference: {fileID: 0}
     - target: {fileID: 5928043496043146258, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8840,7 +8848,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6683159609768855110, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: m_InstanceId
-      value: -260844
+      value: -3288
       objectReference: {fileID: 0}
     - target: {fileID: 8559445997893460278, guid: fbb00d73dc9a35d46a653c6fde6f7166, type: 3}
       propertyPath: _associatedLight
