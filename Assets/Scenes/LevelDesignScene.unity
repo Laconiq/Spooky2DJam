@@ -830,8 +830,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82516491b1a9b78428512b8c07434092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vampireCharacter: {fileID: 5884680928224415257}
-  batCharacter: {fileID: 1674142901}
 --- !u!4 &1882410789
 Transform:
   m_ObjectHideFlags: 0
@@ -1096,6 +1094,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 992875029620290359, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 992875029620290359, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 6ae049bbcbe20bd4f868394355d24878, type: 2}
     - target: {fileID: 2935336098068416514, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
       propertyPath: m_Name
       value: Bat
@@ -1144,6 +1150,10 @@ PrefabInstance:
       propertyPath: m_BodyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5950761527350234863, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 6ae049bbcbe20bd4f868394355d24878, type: 2}
     - target: {fileID: 5950761527350234863, guid: ab1da97f6f224b549af74df608301cbf, type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 64
