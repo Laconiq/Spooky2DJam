@@ -1,4 +1,5 @@
 using System;
+using MoreMountains.Feedbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,9 +9,12 @@ public class BatController : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
     public float speed;
+    [HideInInspector] public float currentSpeed;
+    [SerializeField] private MMF_Player moveMmfPlayer;
 
     public void Awake()
     {
+        currentSpeed = speed;
         controls = new Controls();
         controls.Bat.Move.performed += OnMovePerformed;
         controls.Bat.Move.canceled += OnMoveCanceled;
@@ -34,8 +38,9 @@ public class BatController : MonoBehaviour
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
         Vector2 moveInput = context.ReadValue<Vector2>();
-        Vector2 moveVelocity = moveInput * speed;
+        Vector2 moveVelocity = moveInput * currentSpeed;
         _rigidbody2D.velocity = moveVelocity;
+        moveMmfPlayer.PlayFeedbacks();
         if (moveInput.x > 0)
             _spriteRenderer.flipX = false;
         else if (moveInput.x < 0)
@@ -43,6 +48,7 @@ public class BatController : MonoBehaviour
     }
     private void OnMoveCanceled(InputAction.CallbackContext context)
     {
+        moveMmfPlayer.StopFeedbacks();
         _rigidbody2D.velocity = Vector2.zero;
     }
 }
