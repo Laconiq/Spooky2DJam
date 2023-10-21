@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class LightController : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class LightController : MonoBehaviour
     
     [HideInInspector] public Controls controls;
     [SerializeField] private bool _isInsideTrigger;
-    [SerializeField] private LightSwitch _lightSwitch;
+    [SerializeField] private LightSwitch lightSwitch;
 
     private void Awake()
     {
@@ -40,23 +41,23 @@ public class LightController : MonoBehaviour
 
     private void MechanismActivation(InputAction.CallbackContext context)
     {
-        if (_lightSwitch == null) return;
-        _lightSwitch.MechanismActivation(gameObject);
+        if (lightSwitch == null) return;
+        lightSwitch.MechanismActivation(gameObject);
     }
     
     private void RotateLight(InputAction.CallbackContext context)
     {
         if (playerState is PlayerState.Interacting)
         {
-            _lightSwitch.objectIsRotating = true;
-            _lightSwitch.lightRotation = context.ReadValue<Vector3>().z;
+            lightSwitch.objectIsRotating = true;
+            lightSwitch.lightRotation = context.ReadValue<Vector3>().z;
         }
     }
     
     private void CancelLightRotation(InputAction.CallbackContext context)
     {
-        if (_lightSwitch == null) return;
-        _lightSwitch.objectIsRotating = false;
+        if (lightSwitch == null) return;
+        lightSwitch.objectIsRotating = false;
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -64,16 +65,16 @@ public class LightController : MonoBehaviour
         LightSwitch lightSwitch = other.GetComponent<LightSwitch>();
         if (lightSwitch == null) return;
         _isInsideTrigger = true;
-        _lightSwitch = lightSwitch;
-        _lightSwitch.DisplayText(1);
+        this.lightSwitch = lightSwitch;
+        this.lightSwitch.DisplayText(1);
     }
     
     private void OnTriggerExit2D(Collider2D other)
     {
         LightSwitch lightSwitch = other.GetComponent<LightSwitch>();
         if (lightSwitch == null) return;
-        _lightSwitch.DisplayText(0);
+        this.lightSwitch.DisplayText(0);
         _isInsideTrigger = false;
-        _lightSwitch = null;
+        this.lightSwitch = null;
     }
 }

@@ -16,10 +16,12 @@ public class LightSwitch : MonoBehaviour
     private bool _isUsed;
     private GameObject _gameObjectUsing;
     [HideInInspector] public bool objectIsRotating;
+    private Animator _wheelAnimator;
 
     private void Awake()
     {
         _text.SetActive(false);
+        _wheelAnimator = gameObject.GetComponent<Animator>();
     }
 
     public void MechanismActivation(GameObject go)
@@ -57,10 +59,21 @@ public class LightSwitch : MonoBehaviour
 
     private void Update()
     {
+        WheelAnimation();
         if (!objectIsRotating) return;
         Transform currentLight = _associatedLight.transform.GetChild(0);
         Vector3 lightRotationAngle = currentLight.localEulerAngles;
         float clampedZRotation = Mathf.Clamp(lightRotationAngle.z + lightRotation * _lightRotationSpeed * Time.deltaTime, _maxDownRotation, _maxUpRotation);
         currentLight.localEulerAngles = new Vector3(lightRotationAngle.x, lightRotationAngle.y, clampedZRotation);
+    }
+
+    private void WheelAnimation()
+    {
+        if (lightRotation == -1)
+            _wheelAnimator.SetInteger("State", 1);
+        else if (lightRotation == 1)
+            _wheelAnimator.SetInteger("State", 2);
+        else if (lightRotation == 0)
+            _wheelAnimator.SetInteger("State", 0);
     }
 }
