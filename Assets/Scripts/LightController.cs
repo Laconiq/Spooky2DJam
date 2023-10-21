@@ -13,7 +13,7 @@ public class LightController : MonoBehaviour
     
     [HideInInspector] public Controls controls;
     [SerializeField] private bool _isInsideTrigger;
-    [SerializeField] private LightSwitch lightSwitch;
+    public LightSwitch lightSwitch;
 
     private void Awake()
     {
