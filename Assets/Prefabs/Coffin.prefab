@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5643802245311171031}
   - component: {fileID: 3132377832688443026}
   - component: {fileID: 3759769262389181304}
+  - component: {fileID: 5836165192912578747}
   m_Layer: 0
   m_Name: Coffin
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8554159834081642830}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.165495, y: 1.0361552, z: -0.45227852}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5634022, y: 1.7488875}
   m_EdgeRadius: 0
+--- !u!114 &5836165192912578747
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8554159834081642830}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d973e1f662c21645864379193b6cdbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
