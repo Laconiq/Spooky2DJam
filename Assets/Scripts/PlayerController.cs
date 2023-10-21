@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [HideInInspector] public Controls controls;
+
+    [SerializeField] private SpriteRenderer playerShadow;
     public PlayerInput playerInput;
     private float _horizontalInput;
     private Rigidbody2D _rigidbody2D;
@@ -61,9 +63,15 @@ public class PlayerController : MonoBehaviour
         _isGrounded = Physics2D.IsTouchingLayers(_rigidbody2D.GetComponent<Collider2D>(), LayerMask.GetMask("Ground"));
         _rigidbody2D.velocity = new Vector2(_horizontalInput * currentSpeed, _rigidbody2D.velocity.y);
         if (_horizontalInput > 0)
+        {
             _spriteRenderer.flipX = false;
+            playerShadow.flipX = false;
+        }
         else if (_horizontalInput < 0)
+        {
             _spriteRenderer.flipX = true;
+            playerShadow.flipX = true;
+        }
     }
 
     public void PlayFootstepFeedback()
