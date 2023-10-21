@@ -363,6 +363,106 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 }
             ]
+        },
+        {
+            ""name"": ""Bat"",
+            ""id"": ""a7fc93d0-6c36-485a-8b2c-426694d9ace2"",
+            ""actions"": [
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""9b0a8d69-d489-4ce1-9916-31fec9613756"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""e80f07ac-4534-428e-be88-248d062456ef"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""24e52257-b8fb-4b8b-be95-47f90815504f"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""36c0f9ba-ddeb-4409-8574-643f61034ac2"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""63e30dac-9778-4751-9d6e-476b290b0af9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""28f1fea7-fb1c-403d-84db-9ea02dbbf85c"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                }
+            ]
+        },
+        {
+            ""name"": ""Game"",
+            ""id"": ""95bee0a1-6e90-4eb6-82d6-a0f79a4ad6bb"",
+            ""actions"": [
+                {
+                    ""name"": ""SwitchCharacter"",
+                    ""type"": ""Button"",
+                    ""id"": ""5d8d512e-4fa8-4e08-8919-7330c87033cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""d600b23d-d274-4152-b47d-e2d1fcf4dcb8"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -373,6 +473,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_RotateLightUp = m_Player.FindAction("RotateLightUp", throwIfNotFound: true);
+        // Bat
+        m_Bat = asset.FindActionMap("Bat", throwIfNotFound: true);
+        m_Bat_Move = m_Bat.FindAction("Move", throwIfNotFound: true);
+        // Game
+        m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
+        m_Game_SwitchCharacter = m_Game.FindAction("SwitchCharacter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -500,11 +606,111 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // Bat
+    private readonly InputActionMap m_Bat;
+    private List<IBatActions> m_BatActionsCallbackInterfaces = new List<IBatActions>();
+    private readonly InputAction m_Bat_Move;
+    public struct BatActions
+    {
+        private @Controls m_Wrapper;
+        public BatActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_Bat_Move;
+        public InputActionMap Get() { return m_Wrapper.m_Bat; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BatActions set) { return set.Get(); }
+        public void AddCallbacks(IBatActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BatActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BatActionsCallbackInterfaces.Add(instance);
+            @Move.started += instance.OnMove;
+            @Move.performed += instance.OnMove;
+            @Move.canceled += instance.OnMove;
+        }
+
+        private void UnregisterCallbacks(IBatActions instance)
+        {
+            @Move.started -= instance.OnMove;
+            @Move.performed -= instance.OnMove;
+            @Move.canceled -= instance.OnMove;
+        }
+
+        public void RemoveCallbacks(IBatActions instance)
+        {
+            if (m_Wrapper.m_BatActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBatActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BatActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BatActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BatActions @Bat => new BatActions(this);
+
+    // Game
+    private readonly InputActionMap m_Game;
+    private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
+    private readonly InputAction m_Game_SwitchCharacter;
+    public struct GameActions
+    {
+        private @Controls m_Wrapper;
+        public GameActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SwitchCharacter => m_Wrapper.m_Game_SwitchCharacter;
+        public InputActionMap Get() { return m_Wrapper.m_Game; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(GameActions set) { return set.Get(); }
+        public void AddCallbacks(IGameActions instance)
+        {
+            if (instance == null || m_Wrapper.m_GameActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_GameActionsCallbackInterfaces.Add(instance);
+            @SwitchCharacter.started += instance.OnSwitchCharacter;
+            @SwitchCharacter.performed += instance.OnSwitchCharacter;
+            @SwitchCharacter.canceled += instance.OnSwitchCharacter;
+        }
+
+        private void UnregisterCallbacks(IGameActions instance)
+        {
+            @SwitchCharacter.started -= instance.OnSwitchCharacter;
+            @SwitchCharacter.performed -= instance.OnSwitchCharacter;
+            @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
+        }
+
+        public void RemoveCallbacks(IGameActions instance)
+        {
+            if (m_Wrapper.m_GameActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IGameActions instance)
+        {
+            foreach (var item in m_Wrapper.m_GameActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_GameActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public GameActions @Game => new GameActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnRotateLightUp(InputAction.CallbackContext context);
+    }
+    public interface IBatActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+    }
+    public interface IGameActions
+    {
+        void OnSwitchCharacter(InputAction.CallbackContext context);
     }
 }

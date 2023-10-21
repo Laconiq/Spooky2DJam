@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public PlayerState playerState = PlayerState.Idle;
     
-    private Controls _controls;
+    [HideInInspector] public Controls controls;
 
     public PlayerInput playerInput;
     
@@ -19,28 +19,27 @@ public class PlayerController : MonoBehaviour
     public float speed;
     [SerializeField] private float jumpForce = 5;
     private bool _isGrounded;
-    private void Awake()
+    public void Awake()
     {
-        _controls = new Controls();
-        _controls.Player.Move.performed += OnMovePerformed;
-        _controls.Player.Move.canceled += OnMoveCanceled;
-        _controls.Player.Jump.performed += OnJumpPerformed;
+        controls = new Controls();
+        controls.Player.Move.performed += OnMovePerformed;
+        controls.Player.Move.canceled += OnMoveCanceled;
+        controls.Player.Jump.performed += OnJumpPerformed;
         _rigidbody2D = GetComponent<Rigidbody2D>();
-
         playerInput = GetComponent<PlayerInput>();
     }
     private void OnEnable()
     {
-        _controls.Player.Enable();
+        controls.Player.Enable();
     }
     private void OnDisable()
     {
-        _controls.Player.Disable();
+        controls.Player.Disable();
     }
     private void OnDestroy()
     {
-        _controls.Player.Move.performed -= OnMovePerformed;
-        _controls.Player.Move.canceled -= OnMoveCanceled;
+        controls.Player.Move.performed -= OnMovePerformed;
+        controls.Player.Move.canceled -= OnMoveCanceled;
     }
     private void OnMovePerformed(InputAction.CallbackContext context)
     {
