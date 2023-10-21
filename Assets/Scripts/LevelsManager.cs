@@ -23,6 +23,10 @@ public class LevelsManager : MonoBehaviour
     {
         if (_currentLevel >= levels.Count) return;
         Level currentLevel = levels[_currentLevel];
+        if (_batCharacter.GetComponent<LightController>().playerState == LightController.PlayerState.Interacting)
+            _batCharacter.GetComponent<LightController>().lightSwitch.MechanismActivation(_batCharacter);
+        if (_vampireCharacter.GetComponent<LightController>().playerState == LightController.PlayerState.Interacting)
+            _vampireCharacter.GetComponent<LightController>().lightSwitch.MechanismActivation(_vampireCharacter);
         _vampireCharacter.transform.position = currentLevel.vampireSpawn.transform.position;
         _batCharacter.transform.position = currentLevel.batSpawn.transform.position;
         UpdateLevelText();
