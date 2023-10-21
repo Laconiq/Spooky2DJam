@@ -5,13 +5,22 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Vector2 = System.Numerics.Vector2;
 
 
 public class LightSwitchManager : MonoBehaviour
 {
     private Controls _controls;
 
-    public bool _isInsideTrigger;
+    private bool _isInsideTrigger;
+
+    private bool _isPlayerFrozen;
+
+    public PlayerController _playerController;
+
+    private Vector3 _lightRotation;
+    private float _lightRotationSpeed = 5f;
+
         
     [SerializeField] private Rigidbody2D _playerRigidbody;
     
@@ -23,7 +32,8 @@ public class LightSwitchManager : MonoBehaviour
     {
         _controls = new Controls();
         
-        _controls.Player.Interaction.performed += MechanismActivation; 
+        _controls.Player.Interaction.performed += MechanismActivation;
+        _controls.Player.RotateLightUp.performed += context => { _lightRotation = context.ReadValue<Vector3>(); };
     }
     
     private void OnEnable()
@@ -38,19 +48,19 @@ public class LightSwitchManager : MonoBehaviour
     private void OnDestroy()
     {
         _controls.Player.Interaction.performed -= MechanismActivation;
+        _controls.Player.RotateLightUp.performed -= RotateLightUp;
     }
 
     // Start is called before the first frame update
     void Start()
     {
         _text.SetActive(false);
-        _isInsideTrigger = false; 
+        _isInsideTrigger = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -71,12 +81,33 @@ public class LightSwitchManager : MonoBehaviour
         _isInsideTrigger = false;
     }
 
-    public void MechanismActivation(InputAction.CallbackContext context)
+    private void MechanismActivation(InputAction.CallbackContext context)
     {
-        if (_isInsideTrigger)
+        if (_isInsideTrigger && _playerController.playerState is PlayerController.PlayerState.Idle)
         {
-            _playerRigidbody.constraints = RigidbodyConstraints2D.FreezeAll;
-            Debug.Log("Interaction is done");  
+            _playerController.speed = 0;
+ 
+            Debug.Log("Interaction is done");
+
+            _playerController.playerState = PlayerController.PlayerState.Interacting;
+        }
+        else if(_playerController.playerState is PlayerController.PlayerState.Interacting)
+        {
+            _playerController.speed = 10;
+
+            _playerController.playerState = PlayerController.PlayerState.Idle;
+        }
+    }
+
+    public void RotateLightUp(InputAction.CallbackContext context)
+    {
+        if (_playerController.playerState is PlayerController.PlayerState.Interacting)
+        {
+            _lightRotation = context.ReadValue<Vector3>();
+            
+            Debug.Log("Rotate");
+           
+            _associatedLight.transform.Rotate(Vector3.forward, _lightRotationSpeed);
         }
     }
 }
