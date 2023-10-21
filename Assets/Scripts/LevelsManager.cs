@@ -30,6 +30,13 @@ public class LevelsManager : MonoBehaviour
         _vampireCharacter.transform.position = currentLevel.vampireSpawn.transform.position;
         _batCharacter.transform.position = currentLevel.batSpawn.transform.position;
         UpdateLevelText();
+        
+        RaycastData[] raycastDataObjects = FindObjectsOfType<RaycastData>();
+        foreach (RaycastData raycastData in raycastDataObjects)
+        {
+            raycastData.ResetRotation();
+        }
+        
     }
     private void GoToLevel(int i)
     {
