@@ -11,8 +11,6 @@ public class PlayerController : MonoBehaviour
     public PlayerState playerState = PlayerState.Idle;
     
     private Controls _controls;
-
-    public PlayerInput playerInput;
     
     private float _horizontalInput;
     private Rigidbody2D _rigidbody2D;
@@ -26,8 +24,6 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Move.canceled += OnMoveCanceled;
         _controls.Player.Jump.performed += OnJumpPerformed;
         _rigidbody2D = GetComponent<Rigidbody2D>();
-
-        playerInput = GetComponent<PlayerInput>();
     }
     private void OnEnable()
     {

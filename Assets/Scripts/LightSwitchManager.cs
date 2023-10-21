@@ -13,27 +13,27 @@ public class LightSwitchManager : MonoBehaviour
     private Controls _controls;
 
     private bool _isInsideTrigger;
-
     private bool _isPlayerFrozen;
+    private bool _objectIsRotating;
 
     public PlayerController _playerController;
 
-    private Vector3 _lightRotation;
-    private float _lightRotationSpeed = 5f;
-
-        
-    [SerializeField] private Rigidbody2D _playerRigidbody;
+    private float _lightRotation;
+    private readonly float _lightRotationSpeed = 10f;
+    private float _maxUpRotation = 45f;
+    private float _maxDownRotation = -45f;
     
     [SerializeField] private GameObject _text;
-
     [SerializeField] private GameObject _associatedLight;
+
 
     private void Awake()
     {
         _controls = new Controls();
         
         _controls.Player.Interaction.performed += MechanismActivation;
-        _controls.Player.RotateLightUp.performed += context => { _lightRotation = context.ReadValue<Vector3>(); };
+        _controls.Player.RotateLightUp.performed += RotateLight;
+        _controls.Player.RotateLightUp.canceled += CancelLightRotation;
     }
     
     private void OnEnable()
@@ -48,7 +48,8 @@ public class LightSwitchManager : MonoBehaviour
     private void OnDestroy()
     {
         _controls.Player.Interaction.performed -= MechanismActivation;
-        _controls.Player.RotateLightUp.performed -= RotateLightUp;
+        _controls.Player.RotateLightUp.performed -= RotateLight;
+        _controls.Player.RotateLightUp.canceled -= CancelLightRotation;
     }
 
     // Start is called before the first frame update
@@ -61,12 +62,23 @@ public class LightSwitchManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 inputToDisable = _controls.Player.RotateLightUp.ReadValue<Vector3>();
+        
+        Debug.Log(_objectIsRotating);
+        
+        if (_associatedLight.transform.eulerAngles.z > _maxUpRotation)
+        {
+           
+        }
+        
+        if (_objectIsRotating)
+        {
+            _associatedLight.transform.Rotate(Vector3.forward, _lightRotation * _lightRotationSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Body enter");
-        
         _text.SetActive(true);
 
         _isInsideTrigger = true;
@@ -74,8 +86,6 @@ public class LightSwitchManager : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Debug.Log("Body exit");
-        
         _text.SetActive(false);
         
         _isInsideTrigger = false;
@@ -99,16 +109,18 @@ public class LightSwitchManager : MonoBehaviour
         }
     }
 
-    public void RotateLightUp(InputAction.CallbackContext context)
+    private void RotateLight(InputAction.CallbackContext context)
     {
         if (_playerController.playerState is PlayerController.PlayerState.Interacting)
         {
-            _lightRotation = context.ReadValue<Vector3>();
-            
-            Debug.Log("Rotate");
-           
-            _associatedLight.transform.Rotate(Vector3.forward, _lightRotationSpeed);
+            _objectIsRotating = true;
+            _lightRotation = context.ReadValue<Vector3>().z;
         }
+    }
+
+    private void CancelLightRotation(InputAction.CallbackContext context)
+    {
+        _objectIsRotating = false;
     }
 }
 
