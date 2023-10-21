@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2444496426899838081}
   - component: {fileID: 6525191936073431328}
+  - component: {fileID: 5232500463794863052}
   m_Layer: 0
   m_Name: Tilemap_4 (1)
   m_TagString: Untagged
@@ -168,6 +169,38 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5232500463794863052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406577402703963020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.30456913, y: -1.7961024, z: 0}
+  - {x: -0.30141333, y: 1.7578721, z: 0}
+  - {x: -0.48863462, y: 1.9795299, z: 0}
+  - {x: 0.44755954, y: 1.9754767, z: 0}
+  - {x: 0.26088548, y: 1.7416601, z: 0}
+  - {x: 0.2626911, y: -1.8054087, z: 0}
+  m_ShapePathHash: -1206125766
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -891420
+  m_LocalBounds:
+    m_Center: {x: -0.020537525, y: 0.08706057, z: 0}
+    m_Extent: {x: 0.4680971, y: 1.8924693, z: 0}
 --- !u!1 &826586585707500905
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,15 +2087,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3669317462012840165, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3669317462012840165, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3669317462012840165, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3669317462012840165, guid: 9bd0b5365c4af2c4aa45c8cfc12cba42, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
