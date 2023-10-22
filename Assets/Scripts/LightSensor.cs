@@ -14,11 +14,13 @@ public class LightSensor : MonoBehaviour
     private BoxCollider2D _boxCollider2D;
     private int _activeLightCount;
     private bool _isSensorEnabled;
+    private Animator _animatorShadow;
     private void Awake()
     {
         _boxCollider2D = objectToEnable.GetComponent<BoxCollider2D>();
         _animator = objectToEnable.GetComponent<Animator>();
         _mmfPlayer = GetComponent<MMF_Player>();
+        _animatorShadow = objectToEnable.transform.GetChild(0).gameObject.GetComponent<Animator>();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -47,6 +49,7 @@ public class LightSensor : MonoBehaviour
             _boxCollider2D.enabled = false;
             if (_animator == null) return;
             _animator.SetBool("isEnable", true);
+            _animatorShadow.SetBool("isEnable", true);
             _light2D.intensity = maxIntensity;
             _mmfPlayer.PlayFeedbacks();
         }
@@ -55,6 +58,7 @@ public class LightSensor : MonoBehaviour
             _boxCollider2D.enabled = true;
             if (_animator == null) return;
             _animator.SetBool("isEnable", false);
+            _animatorShadow.SetBool("isEnable", false);
             _light2D.intensity = minIntensity;
         }
     }
