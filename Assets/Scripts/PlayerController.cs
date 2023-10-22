@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [HideInInspector] public Controls controls;
-
     [SerializeField] private SpriteRenderer playerShadow;
     public PlayerInput playerInput;
     private float _horizontalInput;
@@ -75,10 +74,21 @@ public class PlayerController : MonoBehaviour
             _spriteRenderer.flipX = true;
             playerShadow.flipX = true;
         }
+        
+        switch (_rigidbody2D.velocity.y)
+        {
+            case 0:
+                _animator.SetInteger("JumpFrame", 2);
+                break;
+            case < 0:
+                _animator.SetInteger("JumpFrame", 1);
+                break;
+        }
+        
     }
-
     public void PlayFootstepFeedback()
     {
         footstepMmfPlayer.PlayFeedbacks();
     }
+    
 }
