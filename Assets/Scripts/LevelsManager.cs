@@ -13,6 +13,7 @@ public class LevelsManager : MonoBehaviour
     private GameObject _batCharacter;
     public int startLevel;
     [SerializeField] private GameObject credits;
+
     private void Awake()
     {
         _currentLevel = startLevel - 1;
@@ -21,6 +22,7 @@ public class LevelsManager : MonoBehaviour
         MoveCharactersToCurrentLevel();
         UpdateLevelText();
     }
+
     public void MoveCharactersToCurrentLevel()
     {
         if (_currentLevel >= levels.Count) return;
@@ -33,14 +35,14 @@ public class LevelsManager : MonoBehaviour
         _batCharacter.transform.position = currentLevel.batSpawn.transform.position;
         UpdateLevelText();
         _vampireCharacter.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeRotation;
-        
+
         RaycastData[] raycastDataObjects = FindObjectsOfType<RaycastData>();
         foreach (RaycastData raycastData in raycastDataObjects)
         {
             raycastData.ResetRotation();
         }
-        
     }
+
     private void GoToLevel(int i)
     {
         if (i < 0 || i >= levels.Count) return;
@@ -54,6 +56,7 @@ public class LevelsManager : MonoBehaviour
         {
             Debug.Log("Affichage des crédits !");
             credits.SetActive(true);
+            StartCoroutine(ReturnToMainMenuAfterDelay());
         }
         else
         {
@@ -63,11 +66,15 @@ public class LevelsManager : MonoBehaviour
         }
     }
 
-
-
     private void UpdateLevelText()
     {
         int maxLevel = levels.Count;
         levelText.text = "Level " + (_currentLevel + 1) + "/" + maxLevel;
+    }
+
+    private IEnumerator ReturnToMainMenuAfterDelay()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(0);
     }
 }
