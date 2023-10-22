@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class LightController : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class LightController : MonoBehaviour
     public PlayerState playerState = PlayerState.Idle;
     
     [HideInInspector] public Controls controls;
-    [SerializeField] private bool _isInsideTrigger;
     public LightSwitch lightSwitch;
 
     private void Awake()
@@ -64,7 +62,6 @@ public class LightController : MonoBehaviour
     {
         LightSwitch lightSwitch = other.GetComponent<LightSwitch>();
         if (lightSwitch == null) return;
-        _isInsideTrigger = true;
         this.lightSwitch = lightSwitch;
         this.lightSwitch.DisplayText(1);
     }
@@ -74,7 +71,6 @@ public class LightController : MonoBehaviour
         LightSwitch lightSwitch = other.GetComponent<LightSwitch>();
         if (lightSwitch == null) return;
         this.lightSwitch.DisplayText(0);
-        _isInsideTrigger = false;
         this.lightSwitch = null;
     }
 }
