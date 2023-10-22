@@ -48,7 +48,7 @@ public class LightController : MonoBehaviour
         if (playerState is PlayerState.Interacting)
         {
             lightSwitch.objectIsRotating = true;
-            lightSwitch.lightRotation = context.ReadValue<Vector3>().z;
+            lightSwitch.lightRotation = context.ReadValue<Vector2>().x;
         }
     }
     
