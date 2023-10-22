@@ -2,12 +2,14 @@ using UnityEngine;
 public class LightSensor : MonoBehaviour
 {
     [SerializeField] private GameObject objectToEnable;
+    private Animator _animator;
     private BoxCollider2D _boxCollider2D;
     private int _activeLightCount;
     private bool _isSensorEnabled;
     private void Awake()
     {
         _boxCollider2D = objectToEnable.GetComponent<BoxCollider2D>();
+        _animator = objectToEnable.GetComponent<Animator>();
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -37,15 +39,15 @@ public class LightSensor : MonoBehaviour
     {
         if (isEnabled)
         {
-            Debug.Log("Light Sensor Activé");
             _boxCollider2D.enabled = false;
-            // À rajouter plus tard, l'animation qui active le mécanisme
+            if (_animator == null) return;
+            _animator.SetBool("isEnable", true);
         }
         else
         {
-            Debug.Log("Light Sensor Désactivé");
             _boxCollider2D.enabled = true;
-            // À rajouter plus tard, l'animation qui désactive le mécanisme
+            if (_animator == null) return;
+            _animator.SetBool("isEnable", false);
         }
     }
 }
