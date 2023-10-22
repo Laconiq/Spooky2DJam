@@ -489,6 +489,7 @@ MonoBehaviour:
   jumpForce: 5
   footstepMmfPlayer: {fileID: 382841181069724309}
   jumpMmfPlayer: {fileID: 1619451623851114593}
+  shadowAnimator: {fileID: 153023710263492404}
 --- !u!114 &6043753363034621263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,7 +503,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerState: 0
-  _isInsideTrigger: 0
   lightSwitch: {fileID: 0}
 --- !u!1 &2804601245418273139
 GameObject:

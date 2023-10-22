@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private MMF_Player footstepMmfPlayer;
     [SerializeField] private MMF_Player jumpMmfPlayer;
     private Animator _animator;
+    public Animator shadowAnimator;
     public void Awake()
     {
         currentSpeed = speed;
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce);
         jumpMmfPlayer.PlayFeedbacks();
         _animator.SetTrigger("isJumping");
+        shadowAnimator.SetTrigger("isJumping");
     }
     private void Update()
     {
@@ -79,9 +81,11 @@ public class PlayerController : MonoBehaviour
         {
             case 0:
                 _animator.SetInteger("JumpFrame", 2);
+                shadowAnimator.SetInteger("JumpFrame", 2);
                 break;
             case < 0:
                 _animator.SetInteger("JumpFrame", 1);
+                shadowAnimator.SetInteger("JumpFrame", 1);
                 break;
         }
         

@@ -57,6 +57,7 @@ public class CharacterManager : MonoBehaviour
         {
             currentCharacter = batCharacter;
             _vampireController.GetComponent<Animator>().SetBool("isActive", false);
+            _vampireController.GetComponent<PlayerController>().shadowAnimator.SetBool("isActive", false);
             _vampireController.controls.Player.Disable();
             _batController.controls.Bat.Enable();
             vampireCharacter.GetComponent<LightController>().controls.Disable();
@@ -73,6 +74,7 @@ public class CharacterManager : MonoBehaviour
         {
             currentCharacter = vampireCharacter;
             _vampireController.GetComponent<Animator>().SetBool("isActive", true);
+            _vampireController.GetComponent<PlayerController>().shadowAnimator.SetBool("isActive", true);
             _vampireController.controls.Player.Enable();
             _batController.controls.Bat.Disable();
             vampireCharacter.GetComponent<LightController>().controls.Enable();
