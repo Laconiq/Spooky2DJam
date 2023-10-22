@@ -66,8 +66,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0036500096, y: -0.0020499825, z: 0}
-    m_Extent: {x: 0.99845, y: 0.99995, z: 0}
+    m_Center: {x: 0, y: 0.003850013, z: 0}
+    m_Extent: {x: 0.9996, y: 1.00285, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -127,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6844377210377531064
 Transform:
   m_ObjectHideFlags: 0
@@ -352,7 +352,7 @@ MonoBehaviour:
   - {x: 0.32211304, y: -1.361294, z: 0}
   m_ShapePathHash: 886847309
   m_Mesh: {fileID: 0}
-  m_InstanceId: 88930
+  m_InstanceId: 158722
   m_LocalBounds:
     m_Center: {x: -0.024528503, y: -0.7669883, z: 0}
     m_Extent: {x: 0.40901184, y: 0.60241175, z: 0}
@@ -731,7 +731,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 852335154, guid: f09855eb088db4440b5108cc17f143f3, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_FlipX: 0
@@ -838,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6152406975421542152
 Transform:
   m_ObjectHideFlags: 0
@@ -1018,8 +1018,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0036999881, y: 0.008399963, z: 0}
-    m_Extent: {x: 0.99450004, y: 1.0013, z: 0}
+    m_Center: {x: 0.0016000271, y: 0.0019000173, z: 0}
+    m_Extent: {x: 1.0073, y: 1.0063, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1135,7 +1135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 1574643426, guid: f09855eb088db4440b5108cc17f143f3, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_FlipX: 0
