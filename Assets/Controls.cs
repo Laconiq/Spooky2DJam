@@ -492,6 +492,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Options"",
+                    ""type"": ""Button"",
+                    ""id"": ""fab7885a-ddbb-46de-a61e-5a86b171927a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -503,6 +512,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4873bda-0a28-4a05-8981-2630c027c63c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Options"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -523,6 +543,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Game
         m_Game = asset.FindActionMap("Game", throwIfNotFound: true);
         m_Game_SwitchCharacter = m_Game.FindAction("SwitchCharacter", throwIfNotFound: true);
+        m_Game_Options = m_Game.FindAction("Options", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -701,11 +722,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Game;
     private List<IGameActions> m_GameActionsCallbackInterfaces = new List<IGameActions>();
     private readonly InputAction m_Game_SwitchCharacter;
+    private readonly InputAction m_Game_Options;
     public struct GameActions
     {
         private @Controls m_Wrapper;
         public GameActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @SwitchCharacter => m_Wrapper.m_Game_SwitchCharacter;
+        public InputAction @Options => m_Wrapper.m_Game_Options;
         public InputActionMap Get() { return m_Wrapper.m_Game; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -718,6 +741,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SwitchCharacter.started += instance.OnSwitchCharacter;
             @SwitchCharacter.performed += instance.OnSwitchCharacter;
             @SwitchCharacter.canceled += instance.OnSwitchCharacter;
+            @Options.started += instance.OnOptions;
+            @Options.performed += instance.OnOptions;
+            @Options.canceled += instance.OnOptions;
         }
 
         private void UnregisterCallbacks(IGameActions instance)
@@ -725,6 +751,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SwitchCharacter.started -= instance.OnSwitchCharacter;
             @SwitchCharacter.performed -= instance.OnSwitchCharacter;
             @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
+            @Options.started -= instance.OnOptions;
+            @Options.performed -= instance.OnOptions;
+            @Options.canceled -= instance.OnOptions;
         }
 
         public void RemoveCallbacks(IGameActions instance)
@@ -756,5 +785,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IGameActions
     {
         void OnSwitchCharacter(InputAction.CallbackContext context);
+        void OnOptions(InputAction.CallbackContext context);
     }
 }

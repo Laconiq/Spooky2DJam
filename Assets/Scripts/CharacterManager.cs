@@ -16,6 +16,7 @@ public class CharacterManager : MonoBehaviour
     private MMF_Player _mmfPlayer;
     private Rigidbody2D _batRigidbody2D;
     private Rigidbody2D _vampireRigidbody2D;
+    [SerializeField] private GameObject optionsCanvas;
 
     private void Awake()
     {
@@ -29,8 +30,9 @@ public class CharacterManager : MonoBehaviour
         _batRigidbody2D = batCharacter.GetComponent<Rigidbody2D>();
         _controls = new Controls();
         _controls.Game.SwitchCharacter.performed += OnSwitchCharacterPerformed;
+        _controls.Game.Options.performed += OnOptionsPerformed;
         _mmfPlayer = GetComponent<MMF_Player>();
-    }
+}
 
     private void OnEnable()
     {
@@ -40,6 +42,12 @@ public class CharacterManager : MonoBehaviour
     private void OnDisable()
     {
         _controls.Game.Disable();
+    }
+
+    private void OnOptionsPerformed(InputAction.CallbackContext context)
+    {
+        if (optionsCanvas != null)
+            optionsCanvas.SetActive(!optionsCanvas.activeSelf);
     }
 
     private void OnSwitchCharacterPerformed(InputAction.CallbackContext context)
