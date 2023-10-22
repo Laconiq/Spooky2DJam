@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     [SerializeField] private MMF_Player footstepMmfPlayer;
     [SerializeField] private MMF_Player jumpMmfPlayer;
+    private Animator _animator;
     public void Awake()
     {
         currentSpeed = speed;
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
         controls.Player.Jump.performed += OnJumpPerformed;
         _rigidbody2D = GetComponent<Rigidbody2D>();
         playerInput = GetComponent<PlayerInput>();
+        _animator = GetComponent<Animator>();
     }
     private void OnEnable()
     {
@@ -57,6 +59,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody2D.velocity = new Vector2(_rigidbody2D.velocity.x, jumpForce);
         jumpMmfPlayer.PlayFeedbacks();
+        _animator.SetTrigger("isJumping");
     }
     private void Update()
     {

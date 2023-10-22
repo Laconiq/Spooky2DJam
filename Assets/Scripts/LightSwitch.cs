@@ -31,6 +31,7 @@ public class LightSwitch : MonoBehaviour
             onMmfPlayer.PlayFeedbacks();
             _isUsed = true;
             _gameObjectUsing = go;
+            FindObjectOfType<CameraController>().ZoomOut();
             go.GetComponent<LightController>().playerState = LightController.PlayerState.Interacting;
             if (go.GetComponent<PlayerController>()!=null)
                 go.GetComponent<PlayerController>().currentSpeed = 0;
@@ -46,6 +47,7 @@ public class LightSwitch : MonoBehaviour
             offMmfPlayer.PlayFeedbacks();
             _isUsed = false;
             lightRotation = 0;
+            FindObjectOfType<CameraController>().ZoomIn();
             go.GetComponent<LightController>().playerState = LightController.PlayerState.Idle;
             if (go.GetComponent<PlayerController>()!=null)
                 go.GetComponent<PlayerController>().currentSpeed = go.GetComponent<PlayerController>().speed;

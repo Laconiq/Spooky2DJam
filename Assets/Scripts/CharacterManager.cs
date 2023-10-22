@@ -56,6 +56,7 @@ public class CharacterManager : MonoBehaviour
         if (currentCharacter == vampireCharacter)
         {
             currentCharacter = batCharacter;
+            _vampireController.GetComponent<Animator>().SetBool("isActive", false);
             _vampireController.controls.Player.Disable();
             _batController.controls.Bat.Enable();
             vampireCharacter.GetComponent<LightController>().controls.Disable();
@@ -71,6 +72,7 @@ public class CharacterManager : MonoBehaviour
         else
         {
             currentCharacter = vampireCharacter;
+            _vampireController.GetComponent<Animator>().SetBool("isActive", true);
             _vampireController.controls.Player.Enable();
             _batController.controls.Bat.Disable();
             vampireCharacter.GetComponent<LightController>().controls.Enable();
@@ -78,6 +80,15 @@ public class CharacterManager : MonoBehaviour
             _cinemachineVirtualCamera.Follow = vampireCharacter.transform;
             _vampireRigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
             _batRigidbody2D.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+        
+        if (currentCharacter.GetComponent<LightController>().playerState == LightController.PlayerState.Interacting)
+        {
+            FindObjectOfType<CameraController>().ZoomOut();
+        }
+        else if (currentCharacter.GetComponent<LightController>().playerState == LightController.PlayerState.Idle)
+        {
+            FindObjectOfType<CameraController>().ZoomIn();
         }
     }
 }
