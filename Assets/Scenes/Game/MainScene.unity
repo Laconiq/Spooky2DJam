@@ -5443,7 +5443,7 @@ MonoBehaviour:
   - {fileID: 225468461}
   - {fileID: 516581273}
   levelText: {fileID: 812836008}
-  startLevel: 4
+  startLevel: 1
   credits: {fileID: 2130480762}
 --- !u!43 &1879345153
 Mesh:
