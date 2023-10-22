@@ -52,11 +52,17 @@ public class LevelsManager : MonoBehaviour
     {
         if (_currentLevel >= levels.Count - 1)
         {
+            Debug.Log("Affichage des crédits !");
             credits.SetActive(true);
         }
-        _currentLevel++;
-        MoveCharactersToCurrentLevel();
+        else
+        {
+            _currentLevel++;
+            MoveCharactersToCurrentLevel();
+            Debug.Log("Passage au niveau suivant : " + (_currentLevel + 1));
+        }
     }
+
 
 
     private void UpdateLevelText()
