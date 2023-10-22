@@ -12,13 +12,27 @@ public class CameraController : MonoBehaviour
         _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>();
     }
 
-    public void ZoomIn()
+    public void ZoomIn(GameObject go)
     {
         _cinemachineVirtualCamera.m_Lens.OrthographicSize = zoomIn;
+        Follow(go);
     }
 
-    public void ZoomOut()
+    public void ZoomOut(GameObject go)
     {
         _cinemachineVirtualCamera.m_Lens.OrthographicSize = zoomOut;
+        Follow(go);
+    }
+
+    public void Follow(GameObject go)
+    {
+        if (go.GetComponent<LightController>().playerState == LightController.PlayerState.Interacting)
+        {
+            _cinemachineVirtualCamera.Follow = go.GetComponent<LightController>().lightSwitch._associatedLight.transform;
+        }
+        else
+        {
+            _cinemachineVirtualCamera.Follow = go.transform;
+        }
     }
 }

@@ -4,7 +4,7 @@ using MoreMountains.Feedbacks;
 
 public class LightSwitch : MonoBehaviour
 {
-    [SerializeField] private GameObject _associatedLight;
+    public GameObject _associatedLight;
     [SerializeField] private GameObject _text;
     [HideInInspector] public float lightRotation;
     private readonly float _lightRotationSpeed = 40f;
@@ -31,8 +31,8 @@ public class LightSwitch : MonoBehaviour
             onMmfPlayer.PlayFeedbacks();
             _isUsed = true;
             _gameObjectUsing = go;
-            FindObjectOfType<CameraController>().ZoomOut();
             go.GetComponent<LightController>().playerState = LightController.PlayerState.Interacting;
+            FindObjectOfType<CameraController>().ZoomOut(_gameObjectUsing);
             if (go.GetComponent<PlayerController>()!=null)
                 go.GetComponent<PlayerController>().currentSpeed = 0;
             else if (go.GetComponent<BatController>() != null)
@@ -47,8 +47,8 @@ public class LightSwitch : MonoBehaviour
             offMmfPlayer.PlayFeedbacks();
             _isUsed = false;
             lightRotation = 0;
-            FindObjectOfType<CameraController>().ZoomIn();
             go.GetComponent<LightController>().playerState = LightController.PlayerState.Idle;
+            FindObjectOfType<CameraController>().ZoomIn(_gameObjectUsing);
             if (go.GetComponent<PlayerController>()!=null)
                 go.GetComponent<PlayerController>().currentSpeed = go.GetComponent<PlayerController>().speed;
             else if (go.GetComponent<BatController>() != null)
