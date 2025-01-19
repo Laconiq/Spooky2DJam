@@ -1,6 +1,6 @@
 # 🦇 Vampire Slumber
 
-**Vampire Slumber** est un jeu de puzzle développé en 48 heures lors de la **Spooky 2D Jam '23**. Classé **2ᵉ** sur 87 participants**, il combine des mécaniques de lumière et d'ombre dans un univers mystérieux.
+**Vampire Slumber** est un jeu de puzzle développé en 48 heures lors de la **Spooky 2D Jam '23**. Classé **2ᵉ sur 87 participants**, il combine des mécaniques de lumière et d'ombre dans un univers mystérieux.
 
 ## ✒️ Synopsis
 
